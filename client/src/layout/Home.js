@@ -8,19 +8,20 @@ export default class Home extends Component {
   }
 
   admin = () => {
-    this.props.history.push("/adminSignUp")
+    this.props.history.push("/employeeLogin")
   }
 
     render() {
         return (
-            <div> 
- 
-            <div className='block'></div>
-            <div className='block1'><button onClick={this.employee}className='employee'>employee</button></div>
-          <div className='block3'><button onClick={this.admin} className='admin'>admin</button></div>
-
-      
-            </div>
+          <div className='containerHome'> 
+             <h1 className='title'>Nancy's 2020</h1>
+             <div className='top_links'> 
+             <button onClick={this.employee}className='new'>sign up</button>/
+             <button onClick={this.admin} className='login'>login</button>/
+             <button onClick={this.steve} className='steve'>pictures of steve</button>
+             </div>
+             
+          </div>
         )
     }
 }

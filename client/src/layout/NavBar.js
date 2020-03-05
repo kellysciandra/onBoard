@@ -7,8 +7,10 @@ const NavBar = (props) => {
   const toggleNavbar = () => setCollapsed(!collapsed);
 
   return (
-    <div>
+    <div>  
+   
       <Navbar className='nav_bar' light>
+      
       <NavbarToggler onClick={toggleNavbar} className='toggler'/>
         
         <Collapse isOpen={!collapsed} navbar>

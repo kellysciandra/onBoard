@@ -1,5 +1,6 @@
 body {
   font-family: 'IBM Plex Serif', serif;
+  background-color: rgb(199, 231, 247);
 }
 
 * {
@@ -8,24 +9,23 @@ body {
 
 .nav_bar {
 margin-left: 2%;
-width: 30%;
 }
 
 .toggler {
-  border: 10px solid #fbf579!important;
+  border: 5px solid #05386B!important;
 }
 
 .link {
   font-size: 2em;
   font-family: 'IBM Plex Serif', serif;
-  color:  #000000!important; 
+  color:  #05386B!important; 
   font-style: oblique;
   font-weight: bolder;
 }
 .link_title {
   font-size: 5em;
   font-family: 'IBM Plex Serif', serif;
-  color:  #fa625f!important; 
+  color:  #05386B!important; 
 }
 
 
@@ -35,60 +35,58 @@ width: 30%;
 
 /* homepage */
 
+.containerHome {
+  margin-top: -10%;
+}
+
 .title {
   font-style: oblique;
   font-weight: bolder;
-  font-size: 6em;
+  font-size: 4em;
+  text-align: center;
+  color: #05386B;
+  border-top: 10px solid #05386B;
+  border-bottom: 10px solid #05386B;
+  border-width: 10p;
+  padding: 4%;
+  width: 50%;
+  margin-top: 25%;
+  margin-left: 25%;
 }
-.employee {
+
+.new {
+  color: #05386B;
+  background-color: rgb(199, 231, 247);
+  border: none;
   font-style: oblique;
   font-weight: bolder;
-  border: none;
-  font-size: 2em;
-  background-color: #fa625f;
-  margin-left: -40%;
-  margin-top: -15%;
+  font-size: 3em;
 }
-.admin {
+.login {
+  background-color:rgb(199, 231, 247);
+  border: none;
   font-style: oblique;
   font-weight: bolder;
-  font-size: 2em;
-  background-color: #3b85b6;
+  color: #05386B;
+  font-size: 3em;
+}
+
+.steve {
+  background-color:rgb(199, 231, 247);
   border: none;
-  margin-left: -15%;
-  margin-top: -15%;
+  font-style: oblique;
+  font-weight: bolder;
+  color: #05386B;
+  font-size: 2em;
+
 }
 
-.block {
-  margin-top: 15%;
+.top_links {
+  margin-left: 25%;
+  position: relative;
 }
-
-.block1 {
-  background-color: #fa625f;
-  padding: 10%;
-  position: fixed;
-  margin-left: 15%;
-  height: 200px;
-  width: 30%;
-  border-radius: 100%;
-}
-
-.block3 {
-  background-color: #3b85b6; 
-  padding: 10%;
-  margin-left: 55%;
-  position: fixed;
-  width: 30%;
-  height: 200px;
-  border-radius: 100%;
-}
-
-
-
-
 
 /* signup */
-
 .form_container {
   display: flexbox;
   margin-left: 25%;
@@ -99,7 +97,6 @@ width: 30%;
   font-family: 'IBM Plex Serif', serif;
   font-size: 2em;
 }
-
 .welcome {
   text-align: center;
   font-size: 2em;

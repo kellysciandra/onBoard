@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
+const passport = require("passport");
 // Load input validation
 const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
@@ -27,6 +28,7 @@ router.post("/register", (req, res) => {
         const newEmployee = new Employee({
           name: req.body.name,
           email: req.body.email,
+          position: req.body.position,
           password: req.body.password
         });
   // Hash password before saving in database
@@ -95,6 +97,64 @@ router.post("/login", (req, res) => {
       });
     });
   });
+
+
+
+
+// @route PATCH api/employees/update
+// @desc Update an existing employee
+// @access Private
+router.patch("/update",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    let employeeFields = {};
+
+    employeeFields.phone_number = req.body.phone_number;
+    employeeFields.address1 = req.body.address1;
+    employeeFields.address2 = req.body.address2;
+    employeeFields.emergency_contact = req.body.emergency_contact;
+    employeeFields.start_date = req.body.start_date;
+   
+
+    Project.findOneAndUpdate(
+      { _id: req.body.id },
+      { $set: employeeFields },
+      { new: true }
+    )
+      .then(employee => {
+        res.json(employee);
+      })
+      .catch(err => console.log(err));
+    }
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   module.exports = router;

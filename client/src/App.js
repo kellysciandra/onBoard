@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import Home from './layout/Home'
 import NavBar from './layout/NavBar'
 import SignUpEmployee from './auth/SignUpEmployee.js'
+import LoginEmployee from './auth/LoginEmployee.js'
 import SignUpAdmin from './auth/SignUpAdmin.js'
 import Employee from './package/Employee.js'
 import Admin from './admin/Admin.js'
@@ -24,6 +25,7 @@ function App() {
         <NavBar />
           <Route exact path="/" component={Home} />
           <Route exact path="/employeeSignUp/" component={SignUpEmployee} />
+          <Route exact path="/employeeLogin/" component={LoginEmployee} />
           <Route exact path="/adminSignUp" component={SignUpAdmin}/>
           <Route exact path="/employee" component={Employee}/>
           <Route exact path="/admin" component={Admin}/>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Form from 'react-bootstrap/Form'
 import {Col, Button} from 'react-bootstrap'
-import { registerRunner } from '../actions/authActions'
+import { registerEmployee } from '../actions/authActions'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 
@@ -15,6 +15,7 @@ class SignUpEmployee extends Component {
         this.state = {
             name: "",
             email: "",
+            position: "",
             password: "",
             password2: "",
             errors: {}
@@ -30,9 +31,9 @@ class SignUpEmployee extends Component {
     }
 
     componentDidMount() {
-        // if (this.props.auth.isAuthenticated) {
-        //     this.props.history.push('/employee')
-        // }
+        if (this.props.auth.isAuthenticated) {
+            this.props.history.push('/employee')
+        }
     }
 
 
@@ -40,27 +41,28 @@ class SignUpEmployee extends Component {
         this.setState({
             [event.target.name]: event.target.value
         })
-        }
+    }
 
 
     handleSubmit = (event) => {
         event.preventDefault()
 
-        // const newRunner = {
-        //     name: this.state.name,
-        //     email: this.state.email,
-        //     password: this.state.password, 
-        //     password2: this.state.password2
-        // };
+        const newEmployee = {
+            name: this.state.name,
+            email: this.state.email,
+            position: this.state.position,
+            password: this.state.password, 
+            password2: this.state.password2
+        };
 
-        // this.props.registerRunner(newRunner, this.props.history)
-        this.props.history.push("/employee")
+        this.props.registerEmployee(newEmployee, this.props.history)
+        // this.props.history.push("/employee")
     }
 
     
     render() {
 
-        const {name, email, password, password2} = this.state;
+        const {name, position, email, password, password2} = this.state;
 
         return (
             <div>
@@ -69,14 +71,14 @@ class SignUpEmployee extends Component {
                  <Form className='form_container' onSubmit={this.handleSubmit}>
 
                     <Form.Row>
-                         <Form.Group as={Col} controlId="formGridEmail">
+                         <Form.Group as={Col} controlId="formGridName">
                         <Form.Label>Name</Form.Label>
                         <Form.Control type="name" name="name" placeholder="Enter name" onChange={this.handleChange} value={name} />
                         </Form.Group>
 
-                        <Form.Group as={Col} controlId="formGridEmail">
+                        <Form.Group as={Col} controlId="formGridPosition">
                         <Form.Label>Position</Form.Label>
-                        <Form.Control type="email" name="email" placeholder="Enter position" onChange={this.handleChange} value={email} />
+                        <Form.Control type="position" name="position" placeholder="Enter position" onChange={this.handleChange} value={position} />
                         </Form.Group>
                     </Form.Row>
 
@@ -109,7 +111,7 @@ class SignUpEmployee extends Component {
 }
 
 SignUpEmployee.propTypes = {
-    registerRunner: PropTypes.func.isRequired,
+    registerEmployee: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired
 }
@@ -120,4 +122,4 @@ const mapStateToProps = state => ({
 })
 
 
-export default connect(mapStateToProps, { registerRunner })(withRouter(SignUpEmployee))
+export default connect(mapStateToProps, { registerEmployee })(withRouter(SignUpEmployee))

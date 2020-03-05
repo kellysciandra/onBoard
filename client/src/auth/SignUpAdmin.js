@@ -44,15 +44,15 @@ class SignUpAdmin extends Component {
     handleSubmit = (event) => {
         event.preventDefault()
 
-        // const newRunner = {
-        //     name: this.state.name,
-        //     email: this.state.email,
-        //     password: this.state.password, 
-        //     password2: this.state.password2
-        // };
+        const newAdmin = {
+            name: this.state.name,
+            email: this.state.email,
+            password: this.state.password, 
+            password2: this.state.password2
+        };
 
-        // this.props.registerRunner(newRunner, this.props.history)
-        this.props.history.push("/admin")
+        this.props.registerAdmin(newAdmin, this.props.history)
+        // this.props.history.push("/admin")
     }
 
     

@@ -1,4 +1,4 @@
-import { SET_CURRENT_EMPLOYEE, SET_CURRENT_ADMIN, RUNNER_LOADING } from "../actions/types";
+import { SET_CURRENT_EMPLOYEE, SET_CURRENT_ADMIN, EMPLOYEE_LOADING, ADMIN_LOADING, EDIT_EMPLOYEE } from "../actions/types";
 const isEmpty = require("is-empty");
 
 const initialState = { isAuthenticated: false, admin: {}, employee: {}, loading: false };
@@ -16,12 +16,22 @@ export default function(state = initialState, action) {
           ...state, 
           isAuthenticated: !isEmpty(action.payload),
           admin: action.payload
+      };
+    case EDIT_EMPLOYEE: 
+      return {
+        ...state, 
+        employee: action.payload
       }
-    case RUNNER_LOADING:
+    case ADMIN_LOADING:
       return {
         ...state,
         loading: true
       };
+      case EMPLOYEE_LOADING:
+        return {
+          ...state,
+          loading: true
+        };
     default:
       return state;
   }
