@@ -62,40 +62,47 @@ class SignUpAdmin extends Component {
 
         return (
             <div>
-                <div className='block3_signup'></div>
-                <h1 className='welcome'>Who do you like better Steve or Kelly?</h1>
+                <div className='block'><h1 className='welcome'>Steve Loves Baked Cod</h1></div>
                  <Form className='form_container' onSubmit={this.handleSubmit}>
 
                     <Form.Row>
-                         <Form.Group as={Col} controlId="formGridEmail">
-                        <Form.Label>Name</Form.Label>
-                        <Form.Control type="name" name="name" placeholder="Enter name" onChange={this.handleChange} value={name} />
-                        </Form.Group>
-                    </Form.Row>
-
-                    <Form.Row>
                     <Form.Group as={Col} controlId="formGridEmail">
-                        <Form.Label>Email</Form.Label>
-                        <Form.Control type="email" name="email" placeholder="Enter email" onChange={this.handleChange} value={email} />
+                    <Form.Label>Name</Form.Label>
+                    <Form.Control type="name" name="name" placeholder="Enter name" onChange={this.handleChange} value={name} />
                     </Form.Group>
                     </Form.Row>
 
                     <Form.Row>
-                        <Form.Group as={Col} controlId="formGridPassword">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" name="password" placeholder="Password" onChange={this.handleChange} value={password} />
-                        </Form.Group>
-
-                        <Form.Group as={Col} controlId="formGridPassword">
-                        <Form.Label>Confirmation</Form.Label>
-                        <Form.Control type="password" name="password2" placeholder="Password" onChange={this.handleChange} value={password2} />
-                        </Form.Group>
+                    <Form.Group as={Col} controlId="formGridEmail">
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control type="email" name="email" placeholder="Enter email" onChange={this.handleChange} value={email} />
+                    </Form.Group>
                     </Form.Row>
 
-                    <Button variant="dark" type="submit">
-                        Submit
-                    </Button>
-                    </Form>
+                    <Form.Row>
+                    <Form.Group as={Col} controlId="formGridPassword">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control type="password" name="password" placeholder="Password" onChange={this.handleChange} value={password} />
+                    </Form.Group>
+
+                    <Form.Group as={Col} controlId="formGridPassword">
+                    <Form.Label>Confirmation</Form.Label>
+                    <Form.Control type="password" name="password2" placeholder="Password" onChange={this.handleChange} value={password2} />
+                    </Form.Group>
+                    </Form.Row>
+
+                    <Button variant="dark" type="submit">Submit</Button>
+                </Form>
+
+
+            <div className='contact'> </div>
+                <div className='sub_title'>
+                    email: 
+                    <a href='mailto:kellysciandra@gmail.com'>  dave / </a> 
+                    <a href='mailto:kellysciandra@gmail.com'>steve / </a>
+                    <a href='mailto:kellysciandra@gmail.com'>katie / </a>
+                    <a href='mailto:kellysciandra@gmail.com'>kelly  </a>
+                </div>
             </div>
         )
     }

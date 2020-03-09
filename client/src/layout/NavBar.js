@@ -16,20 +16,14 @@ const NavBar = (props) => {
         <Collapse isOpen={!collapsed} navbar>
           <Nav navbar>
             <NavItem>
-            
-              <NavLink href="/employeeSignUp/" className='link'>employee </NavLink>
-              <NavLink href="/adminSignUp/" className='link'>admin </NavLink>
-              {/* <NavLink href="/javaScript/" className='link'>quiz</NavLink>
-              <NavLink href="/glossary/" className='link'>glossary</NavLink> */}
+              <NavLink href="/employeeSignUp/" className='link'>snack bar menu</NavLink>
+              <NavLink href="/employeeSignUp/" className='link'>upstairs menu</NavLink>
+              <NavLink href="/adminSignUp/" className='link'>admin</NavLink>
             </NavItem>
-            <NavItem>
-              {/* <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink> */}
-            </NavItem>
-            
           </Nav>
         </Collapse>
-        {/* <NavLink href="/" className='link_title'>Run VS.</NavLink> */}
       </Navbar>
+    
     </div>
   );
 }

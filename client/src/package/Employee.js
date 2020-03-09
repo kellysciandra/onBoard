@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import Form from 'react-bootstrap/Form'
-import {Col, Button} from 'react-bootstrap'
+
+
 import { editEmployee } from '../actions/authActions'
+import { logoutEmployee } from '../actions/authActions'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
+import EmployeeDocs from '../package/EmployeeDocs.js'
 
 import { withRouter } from 'react-router-dom'
 
@@ -20,7 +22,7 @@ class Employee extends Component {
         }
     }
 
-    componentWillRecieveProps(nextProps) {
+    componentWillReceiveProps(nextProps) {
         if (nextProps.errors) {
             this.setState({
                 errors: nextProps.errors
@@ -56,52 +58,26 @@ class Employee extends Component {
         // this.props.history.push("/employee")
     }
 
+    onLogoutClick = e => {
+        e.preventDefault();
+        this.props.logoutEmployee();
+      };
 
 
 
 
     render() {
         
-        const { phone_number, address1, address2, emergency_contact, start_date} = this.state
+
         return (
-            <div> 
-                <h1 className='profile'>hi name please complete your profile</h1><br></br>
-                <h1 className='header'>display email</h1><br></br>
-                <h1 className='header'>display position</h1><br></br>
-
-                <Form className='form_container' onSubmit={this.handleSubmit}>
-
-                    <Form.Group as={Col} controlId="formPhoneNumber">
-                    <Form.Label>Phone Number</Form.Label>
-                    <Form.Control type="phone number" name="phone_number" placeholder="Enter number" onChange={this.handleChange} value={phone_number}/>
-                    </Form.Group>
-        
-                    <Form.Group as={Col} controlId="formGridAddress">
-                    <Form.Label>Address On Island</Form.Label>
-                    <Form.Control type="address" name="address1" placeholder="Address On Island" onChange={this.handleChange} value={address1}/>
-                    </Form.Group>
-
-                    <Form.Group as={Col} controlId="formGridAddress2">
-                    <Form.Label>Address Off Island</Form.Label>
-                    <Form.Control type="address" name="address2" placeholder="Address Off Island" onChange={this.handleChange} value={address2}  />
-                    </Form.Group>
-
-                    <Form.Group as={Col} controlId="formGridContact">
-                    <Form.Label>Emergency Contact/ Phone Number</Form.Label>
-                    <Form.Control type="contact" name="emergency_contact" placeholder="Name/Number" onChange={this.handleChange} value={emergency_contact}  />
-                    </Form.Group>
-
-                    <Form.Group as={Col} controlId="formGridDate">
-                    <Form.Label>Start Date</Form.Label>
-                    <Form.Control type="date" name="start_date" placeholder="Start Date" onChange={this.handleChange} value={start_date}  />
-                    </Form.Group>
-
-                    <Button variant="dark" type="submit">
-                        Submit
-                    </Button>
-                </Form>
-
-              <h1 className='header'>once you hit submit the documents load</h1>
+            <div>
+                <button className="logout_employee" onClick={this.onLogoutClick}>Logout</button>      
+                <h1 className='profile'>{this.props.employee}</h1><br></br>   
+                <h1 className='header'>please read the following forms</h1><br></br>
+                <h1 className='header'>sign each page</h1><br></br>
+                <h1 className='header'>once you hit submit the documents load</h1>
+                <EmployeeDocs />
+          
                 
             </div>
         );
@@ -109,15 +85,17 @@ class Employee extends Component {
 }
 
 Employee.propTypes = {
+    logoutEmployee: PropTypes.func.isRequired, 
     editEmployee: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
-    errors: PropTypes.object.isRequired
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = state => ({ 
+    employee: state.auth.employee.name,
     auth: state.auth,
-    errors: state.errors
+    errors: console.log(state)
 })
 
 
-export default connect(mapStateToProps, { editEmployee })(withRouter(Employee))
+
+export default connect(mapStateToProps, { editEmployee, logoutEmployee })(withRouter(Employee))

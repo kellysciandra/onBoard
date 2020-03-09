@@ -7,19 +7,24 @@ export default class Home extends Component {
     this.props.history.push("/employeeSignUp");
   }
 
-  admin = () => {
-    this.props.history.push("/employeeLogin")
-  }
-
     render() {
         return (
-          <div className='containerHome'> 
+          <div> 
+              <div className='logo'></div>
              <h1 className='title'>Nancy's 2020</h1>
              <div className='top_links'> 
-             <button onClick={this.employee}className='new'>sign up</button>/
-             <button onClick={this.admin} className='login'>login</button>/
-             <button onClick={this.steve} className='steve'>pictures of steve</button>
+             <button onClick={this.employee} className='new'>new employee</button>
              </div>
+             <div className='contact'> </div>
+            
+               <div className='sub_title'>
+                 email: 
+                 <a href='mailto:kellysciandra@gmail.com'>  dave / </a> 
+                 <a href='mailto:kellysciandra@gmail.com'>steve / </a>
+                 <a href='mailto:kellysciandra@gmail.com'>katie / </a>
+                 <a href='mailto:kellysciandra@gmail.com'>kelly  </a>
+               </div>
+              
              
           </div>
         )

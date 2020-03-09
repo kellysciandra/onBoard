@@ -2,12 +2,12 @@ import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
 
-import { GET_ERRORS, SET_CURRENT_ADMIN, SET_CURRENT_EMPLOYEE, ADMIN_LOADING, EMPLOYEE_LOADING, EDIT_EMPLOYEE } from "./types";
+import { GET_ERRORS, SET_CURRENT_ADMIN, SET_CURRENT_EMPLOYEE, ADMIN_LOADING, EMPLOYEE_LOADING, EDIT_EMPLOYEE, GET_EMPLOYEES } from "./types";
 
 export const registerAdmin = (adminData, history) => dispatch => {
   axios
     .post("/api/admins/register", adminData)
-    .then(res =>  console.log(res), history.push("/login"))
+    .then(res =>  console.log(res), history.push("/admin"))
     .catch(err =>
       dispatch({
         type: GET_ERRORS,
@@ -90,11 +90,31 @@ export const loginEmployee = employeeData => dispatch => {
     })
     .catch(err =>
       dispatch({
-        type: GET_ERRORS,
+        type: 'GET_ERRORS',
         payload: err.response.data
       })
     );
 };
+
+
+
+export const getEmployees = employeeData => dispatch => {
+  axios
+    .get("api/employees")
+    .then(res => {console.log(res)
+      dispatch({
+        type: 'GET_EMPLOYEES',
+        payload: res.data
+      })
+  })
+}
+
+
+
+
+
+
+
 
 export const editEmployee = (employeeData, history) => dispatch => {
   axios
@@ -135,3 +155,4 @@ export const logoutEmployee = () => dispatch => {
   dispatch(setCurrentEmployee({}));
   this.history.push("/")
 };
+

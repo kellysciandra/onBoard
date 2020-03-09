@@ -29,7 +29,12 @@ router.post("/register", (req, res) => {
           name: req.body.name,
           email: req.body.email,
           position: req.body.position,
-          password: req.body.password
+          password: req.body.password,
+          phone_number: req.body.phone_number,
+          address1: req.body.address1,
+          address2: req.body.address2,
+          emergency_contact: req.body.emergency_contact,
+          start_date: req.body.start_date
         });
   // Hash password before saving in database
         bcrypt.genSalt(10, (err, salt) => {
@@ -116,7 +121,7 @@ router.patch("/update",
     employeeFields.start_date = req.body.start_date;
    
 
-    Project.findOneAndUpdate(
+    Employee.findOneAndUpdate(
       { _id: req.body.id },
       { $set: employeeFields },
       { new: true }
@@ -128,6 +133,29 @@ router.patch("/update",
     }
 );
 
+
+router.get( "/:id", (req,res) => {
+
+  if (mongoogse.Types.ObjectId.isValid(employeeId.id)) {
+    Employee.findById(employee.id) 
+      .then((res) => {
+        console.log(res)
+      })
+  }
+
+
+  } 
+);
+
+
+router.get('/', async (req, res) => {
+  try {
+    const employee = await Employee.find()
+      res.json(employee)
+  } catch (err) {
+    res.status(500).json({ message: err.message })
+  }
+})
 
 
 
